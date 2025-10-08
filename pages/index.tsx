@@ -55,7 +55,7 @@ const TeamPage = async () => {
                     rel="noopener noreferrer"
                     className="inline-block mt-4 text-blue-600 hover:text-blue-800 transition-colors duration-200"
                   >
-                    LinkedIn DDD
+                    LinkedIn
                   </a>
                 )}
               </div>
