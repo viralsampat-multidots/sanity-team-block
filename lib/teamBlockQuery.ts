@@ -4,7 +4,7 @@ _id,
 name,
 designation,
 shortDescription,
-image,
+image{asset->{url}},
 linkedin,
 }
 `
