@@ -1,9 +1,10 @@
-// app/team/page.tsx
+import React from 'react'
 import { client } from '@/lib/sanity-client'
 import { teamBlockQuery } from '@/lib/teamBlockQuery'
 import type { Image } from 'sanity'
 
-interface TeamMember {
+// Create interface for team members
+export interface TeamMember {
   _id: string
   name: string
   designation: string
@@ -12,13 +13,11 @@ interface TeamMember {
   linkedin: string|null
 }
 
-const TeamPage = async () => {
-  const teamMembers: TeamMember[] = await client.fetch(teamBlockQuery)
+interface Props {
+  teamMembers: TeamMember[]
+}
 
-  if (!teamMembers || teamMembers.length === 0) {
-    return <div className="text-center py-20">No team members found</div>
-  }
-
+const TeamPage: React.FC<Props> = ({ teamMembers }) => {
   return (
     <section className="bg-gray-50 py-16">
       <div className="max-w-7xl mx-auto px-6">
@@ -65,6 +64,16 @@ const TeamPage = async () => {
       </div>
     </section>
   )
+}
+
+export const getServerSideProps = async () => {
+  const teamMembers: TeamMember[] = await client.fetch<TeamMember[]>(teamBlockQuery)
+
+  return {
+    props: {
+      teamMembers
+    }
+  }
 }
 
 export default TeamPage
