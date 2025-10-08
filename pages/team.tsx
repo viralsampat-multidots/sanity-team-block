@@ -2,13 +2,14 @@
 import { client } from '@/lib/sanity-client'
 import { teamBlockQuery } from '@/lib/teamBlockQuery'
 import { urlFor } from '@/lib/sanity-image'
+import type { Image } from 'sanity'
 
 interface TeamMember {
   _id: string
   name: string
   designation: string
   shortDescription: string
-  image: any
+  image: Image
   linkedin: string
 }
 
